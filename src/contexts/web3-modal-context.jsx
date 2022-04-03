@@ -38,7 +38,7 @@ const Web3ModalProvider = ({ children }) => {
 
   const web3Modal = new Web3Modal({
     disableInjectedProvider: false,
-    network: selectedNetwork.chainId === "0x01" ? "mainnet" : "binance",
+    //network: "mainnet",
     cacheProvider: false,
     providerOptions,
     theme: "dark",
@@ -49,6 +49,7 @@ const Web3ModalProvider = ({ children }) => {
 
     setModalProvider(modalProvider);
     const provider = new ethers.providers.Web3Provider(modalProvider);
+    changeNetwork(`0x28`);
     setProvider(provider);
     return modalProvider;
   };
@@ -60,6 +61,7 @@ const Web3ModalProvider = ({ children }) => {
       throw new Error(`An error has ocured`);
     }
     const provider = window.ethereum;
+
     if (provider) {
       if (networkId === "0x1") {
         await provider.request({

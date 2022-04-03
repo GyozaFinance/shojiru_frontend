@@ -1,13 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 
 import DashBoard from './composents/dashboard';
 import { Web3ModalProvider } from './contexts/web3-modal-context';
 import { DashBoardProvider } from './contexts/dashboard-context';
-import { loadContext, LoadProvider } from './contexts/load-context';
-import { useContext } from 'react';
-import { Puff } from 'react-loader-spinner';
-import styled from 'styled-components'
+import { LoadProvider } from './contexts/load-context';
+
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 function App() {

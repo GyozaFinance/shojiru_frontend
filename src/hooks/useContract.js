@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { getChefContract, getTokenContract } from "../utils/contractHelpers";
+import { getChefContract, getTokenContract, getUniSwapRouterContract } from "../utils/contractHelpers";
 import { accountLessProviders } from "../utils/injected";
 import useWeb3 from "./useWeb3";
 
@@ -20,7 +20,10 @@ export const useReadOnlyChefContract = () => {
   return useMemo(() => getChefContract(accountLessProvider), []);
 };
 
-
+export const useReadOnlyUniswapRouterContract = () => {
+  const accountLessProvider =  accountLessProviders.find(({chainId}) => chainId === localStorage.getItem('chainId'))?.provider;
+  return useMemo(() => getUniSwapRouterContract(accountLessProvider),[])
+}
 
 export const useChefContract = () => {
   const web3 = useWeb3();

@@ -1,34 +1,29 @@
-import { useContext } from "react";
-import { dashBoardContext } from "../contexts/dashboard-context";
-import eth from "../images/eth.png";
-import eterna from "../images/eterna.jpg";
-import bnb from "../images/bnb.svg";
+import styled from "styled-components";
+import { tokensImages } from "../utils/tokens";
 
+export const HotAPY = styled.span`
+  background: linear-gradient(87.63deg, #fc0707 -45.93%, #ffe600 96.4%);
+  font-size: 0.7rem;
+  padding: 0.3em 1em;
+  border-radius: 10px;
+  color: #000;:
+`;
 const PoolHeader = ({ pool }) => {
   const { pair, lock } = pool;
-  const { refetch } = useContext(dashBoardContext);
+
   return (
-    <header className="flex flex-col-reverse mb-4 sm:flex-row">
-      <ul className="w-28 flex">
-        <p className="hidden">{refetch}</p>
+    <div className="flex flex-col-reverse mb-4 sm:flex-row w-full">
+      <ul className="w-20 flex">
         {pair.map((t) => (
           <li className="pair rounded-full w-1/2 square">
             <span className="centerXY">
-              <img
-                src={t === "ETH" ? eth : t === "BNB" ? bnb : eterna}
-                alt="logo"
-              />
+              <img src={tokensImages[t]} alt="logo" />
             </span>
           </li>
         ))}
       </ul>
-      <span className="lock text-sm flex-1 text-right mb-4 sm:mb-0">
-        <span className="bg-black px-4 py-1 rounded-full text-sm">
-          {!lock && "Not locked"}
-          {lock && `Lock-time: ${lock} days`}
-        </span>
-      </span>
-    </header>
+      <HotAPY className="top0 right0 absolute  mt-3 mr-4 hotApy">🔥 APY</HotAPY>
+    </div>
   );
 };
 

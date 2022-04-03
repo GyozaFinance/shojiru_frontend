@@ -17,6 +17,7 @@ import { web3Context } from "../contexts/web3-modal-context";
 
 const useAuth = () => {
   const { activate, deactivate, account, active, library } = useWeb3Modal();
+  
 
   useEffect(() => {
     if (active) {

@@ -2,19 +2,9 @@
   {
     "inputs": [
       {
-        "internalType": "contract Zappy",
-        "name": "_zap",
-        "type": "address"
-      },
-      {
         "internalType": "address",
-        "name": "_devaddr",
+        "name": "_shojiru",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_zapPerSecond",
-        "type": "uint256"
       },
       {
         "internalType": "uint256",
@@ -99,6 +89,69 @@
     "inputs": [
       {
         "indexed": true,
+        "internalType": "uint256",
+        "name": "_pid",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_oldAllocPoint",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_allocPoint",
+        "type": "uint256"
+      }
+    ],
+    "name": "SetAllocPoint",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "oldSupply",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "newSupply",
+        "type": "uint256"
+      }
+    ],
+    "name": "SetMaxSupply",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "oldShojiruPerSecond",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ShojiruPerSecond",
+        "type": "uint256"
+      }
+    ],
+    "name": "SetShojiruPerSecond",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
         "internalType": "address",
         "name": "user",
         "type": "address"
@@ -121,7 +174,20 @@
   },
   {
     "inputs": [],
-    "name": "MaxAllocPoint",
+    "name": "SHOJIRU",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "ShojiruPerSecond",
     "outputs": [
       {
         "internalType": "uint256",
@@ -141,13 +207,55 @@
       },
       {
         "internalType": "contract IERC20",
-        "name": "_lpToken",
+        "name": "_want",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_withUpdate",
+        "type": "bool"
+      },
+      {
+        "internalType": "address",
+        "name": "_strat",
         "type": "address"
       }
     ],
-    "name": "add",
+    "name": "addPool",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IERC20",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "availableAssets",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "burnAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -159,39 +267,13 @@
       },
       {
         "internalType": "uint256",
-        "name": "_amount",
+        "name": "_wantAmt",
         "type": "uint256"
       }
     ],
     "name": "deposit",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_devaddr",
-        "type": "address"
-      }
-    ],
-    "name": "dev",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "devaddr",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -232,6 +314,24 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_token",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "inCaseTokensGetStuck",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "massUpdatePools",
     "outputs": [],
@@ -240,7 +340,7 @@
   },
   {
     "inputs": [],
-    "name": "maxZapPerSecond",
+    "name": "maxSupply",
     "outputs": [
       {
         "internalType": "uint256",
@@ -265,6 +365,19 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "ownerSHOJIRUReward",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -277,7 +390,7 @@
         "type": "address"
       }
     ],
-    "name": "pendingZAP",
+    "name": "pendingSHOJIRU",
     "outputs": [
       {
         "internalType": "uint256",
@@ -300,7 +413,7 @@
     "outputs": [
       {
         "internalType": "contract IERC20",
-        "name": "lpToken",
+        "name": "want",
         "type": "address"
       },
       {
@@ -310,13 +423,18 @@
       },
       {
         "internalType": "uint256",
-        "name": "lastRewardTime",
+        "name": "lastRewardTimestamp",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "accZAPPerShare",
+        "name": "accSHOJIRUPerShare",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "strat",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -353,6 +471,11 @@
         "internalType": "uint256",
         "name": "_allocPoint",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "_withUpdate",
+        "type": "bool"
       }
     ],
     "name": "set",
@@ -364,13 +487,50 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_zapPerSecond",
+        "name": "_maxSupply",
         "type": "uint256"
       }
     ],
-    "name": "setZapPerSecond",
+    "name": "setMaxSupply",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_ShojiruPerSecond",
+        "type": "uint256"
+      }
+    ],
+    "name": "setShojiruPerSecond",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_pid",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "stakedWantTokens",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -442,7 +602,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "amount",
+        "name": "shares",
         "type": "uint256"
       },
       {
@@ -463,7 +623,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_amount",
+        "name": "_wantAmt",
         "type": "uint256"
       }
     ],
@@ -473,29 +633,16 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "zap",
-    "outputs": [
-      {
-        "internalType": "contract Zappy",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "zapPerSecond",
-    "outputs": [
+    "inputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "_pid",
         "type": "uint256"
       }
     ],
-    "stateMutability": "view",
+    "name": "withdrawAll",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]

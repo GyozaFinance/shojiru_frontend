@@ -4,14 +4,71 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./fonts/sf-pro.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./fonts/sf-pro.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./fonts/sf-pro-light.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+}
+
 #WEB3_CONNECT_MODAL_ID {
   z-index: 999999999;
   position: relative;
 }
 body {
-  background: #0f0f13;
+  background: #010a2a;
   color: #fff;
-  font-family: "Helvetica";
+  font-family: "SF Pro Rounded";
+}
+
+.connect-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 2rem;
+}
+.text-primary {
+  color: #8fff00;
+}
+
+/*
+@media screen and (min-width: 500) {
+  .green-button {
+    font-size: 1.4rem;
+    padding: 0 2rem;
+  }
+  
+}*/
+
+.rodal-dialog {
+  background: #0b1d4d !important;
+  border-radius: 30px !important;
+  color: #fff !important;
+  display: flex !important;
+  font-family: "SF Pro Rounded" !important;
+}
+.rodal-close {
+  z-index: 999 !important;
+}
+strong {
+  color: #fc0505;
+}
+header {
+  background: #0b1d4d;
 }
 #dashboard {
   background-repeat: no-repeat;
@@ -40,6 +97,12 @@ body {
   top: -0.5em;
 }
 
+.gradient-border {
+}
+.bg-blue {
+  background: #0b1d4d;
+}
+
 .playFair {
   font-family: "Playfair";
   font-style: italic;
@@ -47,9 +110,11 @@ body {
 .text-black {
   color: #000;
 }
-.box {
-  background: #fff;
-  color: #666;
+.right0 {
+  right: 0;
+}
+.top0 {
+  top: 0;
 }
 
 .pair {
@@ -63,7 +128,7 @@ body {
 .pair:nth-child(2) {
   position: relative;
   z-index: 2;
-  margin-left: -1rem;
+  transform: translate(-50%, 35%);
 }
 .square {
   position: relative;
@@ -85,6 +150,9 @@ body {
   max-width: 1200px;
 }
 
+.fixedSmallContainer {
+  max-width: 1000px;
+}
 .border-white {
   border: 1px solid #fff;
 }

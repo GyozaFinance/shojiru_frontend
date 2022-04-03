@@ -1,24 +1,24 @@
 import { BigNumber } from "ethers";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { dashBoardContext } from "../contexts/dashboard-context";
-import { web3Context } from "../contexts/web3-modal-context";
+
 import useAuth from "../hooks/useAuth";
-import useWeb3 from "../hooks/useWeb3";
+
 import { approve } from "../utils/approve";
 
-import { BlueButton } from "../utils/styled";
+import { ActionButton, GradientText, SmallText } from "../utils/styled";
 
 import StackingManager from "./stacking-manager";
 
-import ProgressBar from "./ProgressBar";
-import PoolHeader from "./Poolheader";
+import { HotAPY } from "./Poolheader";
+import { tokensImages } from "../utils/tokens";
 
 const Pools = () => {
-  const { contract, ERC20Name } = useContext(dashBoardContext);
+  const { active, login } = useAuth();
 
-  const { active, account, login, logout, web3 } = useAuth();
-
+  const [showModal, setShowmodal] = useState(false);
+  const [selectedPool, setSelectedpool] = useState(null);
   const { poolList } = useContext(dashBoardContext);
 
   return (
@@ -26,31 +26,88 @@ const Pools = () => {
       id="pools"
       className="mx-auto flex flex-wrap fixedContainer justify-center"
     >
-      {/*<strong className="warning block w-full text-md w-full text-center">
-        ⚠️ If you unstake before the lock period, you pay 50% of your tokens. ⚠️
-  </strong>*/}
       {poolList.map((pool) => {
         const {
           pair,
-          lock,
           vault,
           allowance,
           apy,
           userDeposited,
-          userInfo,
-          progress,
+          tvl,
+          stakedTokenName,
+          website,
+          stakedToken,
         } = pool;
 
         return (
-          <li className="w-full md:w-1/2 p-4">
-            <div className="box rounded-3xl p-8">
-              <PoolHeader pool={pool} />
-              <div className="flex flex-wrap">
-                <ul className="mt-8 infos w-full sm:w-8/12 playFair">
-                  <li className="flex text-bold text-black">
-                    Apy:{" "}
-                    {apy !== null ? (
-                      `${apy} %`
+          <li className="w-full p-2 relative">
+            <div className="box rounded-3xl p-4 bg-blue flex flex-wrap">
+              <div className="w-full flex sm:w-1/2 lg:w-1/3">
+                <div>
+                  <ul className="w-20 flex">
+                    {pair.map((t) => (
+                      <li className="pair rounded-full w-1/2 square">
+                        <span className="centerXY">
+                          <img src={tokensImages[t]} alt="logo" />
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex flex-col justify-center flex-1">
+                  <span className="tracking-wider text-md md:text-xl font-bold">
+                    {pair.map((token, index) => {
+                      return `${token}${index !== 1 ? "-" : ""} `;
+                    })}
+                    <HotAPY className="hotApy">🔥 APY</HotAPY>
+                  </span>
+                  <SmallText className="block">
+                    {website !== undefined && website}
+                  </SmallText>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 sm:w-1/4 sm:mt-0 lg:w-1/6">
+                <span className="block">TVL:</span>
+                <span>
+                  {tvl !== null ? (
+                    `${tvl}$`
+                  ) : (
+                    <span className="relative block pt-2 ml-4">
+                      <TailSpin
+                        width={10}
+                        height={10}
+                        className="mt-4 relative"
+                      />
+                    </span>
+                  )}
+                </span>
+              </div>
+
+              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 sm:w-1/4 sm:mt-0 lg:w-1/6">
+                <span className="block">Apy:</span>
+                <GradientText>
+                  {apy !== null ? (
+                    `${apy} %`
+                  ) : (
+                    <span className="relative block pt-2 ml-4">
+                      <TailSpin
+                        width={10}
+                        height={10}
+                        className="mt-4 relative"
+                      />
+                    </span>
+                  )}
+                </GradientText>
+              </div>
+              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 lg:w-1/6 lg:mt-0">
+                <span className="block">Deposited:</span>
+                {active && (
+                  <div>
+                    {userDeposited !== null ? (
+                      `${userDeposited} ${
+                        stakedTokenName ? stakedTokenName : ""
+                      }`
                     ) : (
                       <span className="relative block pt-2 ml-4">
                         <TailSpin
@@ -60,50 +117,63 @@ const Pools = () => {
                         />
                       </span>
                     )}
-                  </li>
-                  {active && userInfo && (
-                    <li className="flex">
-                      Deposit:{" "}
-                      {`${userDeposited} ${ERC20Name ? ERC20Name : ""}`}
-                    </li>
-                  )}
-                </ul>
-                <div className="buttons w-full sm:w-4/12 mt-8 flex justify-end w-full">
-                  {!active && (
-                    <BlueButton
-                      className="block mx-auto"
-                      onClick={() => login()}
-                    >
-                      Connect wallet
-                    </BlueButton>
-                  )}
-                  {allowance !== null && allowance.eq(BigNumber.from(0)) && (
-                    <BlueButton
-                      onClick={async () => {
-                        if (!active) {
-                          await login();
-                          approve(contract, vault);
-                        } else {
-                          approve(contract, vault);
-                        }
-                      }}
-                    >
-                      Approve Contract
-                    </BlueButton>
-                  )}
-                  {active && allowance > 0 && <StackingManager pool={pool} />}
-                </div>
-                {progress !== null && (
-                  <React.StrictMode>
-                    <strong className="mt-4">Your lock progression: </strong>
-                    <ProgressBar progress={pool.progress} bgcolor={"#0060f8"} />
-                  </React.StrictMode>
+                  </div>
+                )}
+                {!active && (
+                  <SmallText>
+                    <GradientText>Disconnected</GradientText>
+                  </SmallText>
+                )}
+              </div>
+              <div className="w-1/2 lg:w-1/6 mt-8 lg:mt-0">
+                {!active && (
+                  <ActionButton
+                    className="block mx-auto"
+                    onClick={() => login()}
+                  >
+                    Connect
+                  </ActionButton>
+                )}
+                {allowance !== null && allowance.eq(BigNumber.from(0)) && (
+                  <ActionButton
+                    onClick={async () => {
+                      if (!active) {
+                        await login();
+                        approve(stakedToken, vault);
+                      } else {
+                        approve(stakedToken, vault);
+                      }
+                    }}
+                  >
+                    Approve Contract
+                  </ActionButton>
+                )}
+
+                {active && allowance > 0 && (
+                  <ActionButton
+                    onClick={() => {
+                      setSelectedpool(pool);
+                      setShowmodal(true);
+                    }}
+                  >
+                    Manage
+                  </ActionButton>
                 )}
               </div>
             </div>
           </li>
         );
       })}
+      {selectedPool && (
+        <StackingManager
+          pool={selectedPool}
+          visible={showModal}
+          onClose={() => {
+            setShowmodal(false);
+            setSelectedpool(null);
+          }}
+        />
+      )}
     </ul>
   );
 };
