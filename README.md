@@ -2,7 +2,7 @@
 
 Welcome to Shojiru.finance front-end repository! This is our entry for the Telos Spark hackathon. If you're interested in the contract side, head over to the contract repository, for a more technical explanation.
 
-Shojiru.finance is a native yield optimizer, built for Telos. 
+Shojiru.finance is a proof-of-concept of a native yield optimizer, built for Telos.
 
 ## Why another yield optimizer?
 
@@ -26,7 +26,7 @@ Sure! The contracts should work, and you can already stake. Bear in mind that th
 Given that we're one of the first defi projects on Telos, we understand our role as pionneers. Our Solidity dev (Yakitori in the Telos EVM dev chat) has been working closely with Telos core developpers to signal bugs, give feedback and debug issues. We plan to continue the collaboration, in order to improve the development experience for devs on Telos, which we think is pivotal to reach mass adoption.
 
 ## Roadmap
-We plan in the short term to improve the UI of the platform, to make it even more easy to use and stylish, add charts and proper docs. A proper launch is certainly on the table! In the medium term, We'll consider turning Shojiru.finance into a DAO, or at least adopt a collaborative model where Telos users can submit new strategies - either code or "recipes" and earn a fee from their usage. When a lending/borrowing will come, we're think about creating
+We plan in the short term to improve the UI of the platform, to make it even more easy to use, snappy (multicall anyone?) and stylish, add charts and proper docs. A proper launch is certainly on the table! In the medium term, We'll consider turning Shojiru.finance into a DAO, or at least adopt a collaborative model where Telos users can submit new strategies - either code or "recipes" and earn a fee from their usage. When a lending/borrowing will come, we're think about creating
 
 ## Who are we?
 The team is composed of a Solidity dev (Yakitori/Kusanagi on Discord) and a Front-end dev (Loyu), with more than one year of experience in the cryptoverse as freelancers. We met on a mission for a client, and decided to work together for this hackathon! We're anon for the internet, because we like our privacy, but if the team wants us to do a KYC privately, we are open to it.
