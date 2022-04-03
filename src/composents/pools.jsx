@@ -40,13 +40,13 @@ const Pools = () => {
         } = pool;
 
         return (
-          <li className="w-full p-2 relative">
+          <li className="w-full p-2 relative" key={pool.vault.address}>
             <div className="box rounded-3xl p-4 bg-blue flex flex-wrap">
               <div className="w-full flex sm:w-1/2 lg:w-1/3">
                 <div>
                   <ul className="w-20 flex">
                     {pair.map((t) => (
-                      <li className="pair rounded-full w-1/2 square">
+                      <li className="pair rounded-full w-1/2 square" key={t}>
                         <span className="centerXY">
                           <img src={tokensImages[t]} alt="logo" />
                         </span>

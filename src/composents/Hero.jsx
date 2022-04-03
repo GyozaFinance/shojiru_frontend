@@ -2,7 +2,7 @@ import hero1 from "../images/hero1.png";
 import hero2 from "../images/hero2.png";
 import hero3 from "../images/hero3.png";
 import styled from "styled-components";
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
 import { dashBoardContext } from "../contexts/dashboard-context";
 const HeroImages = styled.ul`
   display: flex;

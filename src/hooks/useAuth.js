@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useContext, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import {UnsupportedChainIdError } from "@web3-react/core";
 import {
   NoEthereumProviderError,
@@ -13,7 +13,7 @@ import { injected } from "../utils/injected";
 import { toast } from "react-toastify";
 import { setupNetwork } from "../utils/wallet";
 import useWeb3Modal from "./useWeb3Modal";
-import { web3Context } from "../contexts/web3-modal-context";
+
 
 const useAuth = () => {
   const { activate, deactivate, account, active, library } = useWeb3Modal();

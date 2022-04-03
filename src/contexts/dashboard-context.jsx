@@ -1,20 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { BigNumber, ethers } from "ethers";
 import React, { useContext, useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import {
-  useChefContract,
-  useReadOnlyUniswapRouterContract,
-  useTokenContract,
-} from "../hooks/useContract";
+import { useTokenContract } from "../hooks/useContract";
 import useWeb3 from "../hooks/useWeb3";
 import {
   getCakeVaultContract,
   getChefContract,
   getContract,
   getPoolToken,
-  getUniSwapRouterContract,
   getYOMasterChef,
-  USDT,
   WETH,
 } from "../utils/contractHelpers";
 import { pools } from "../utils/pools";
@@ -28,25 +23,20 @@ const dashBoardContext = React.createContext({
   globalTVL: 0,
 });
 
-const formatAmount = (amount) => {
-  return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
-
 const DashBoardProvider = ({ children }) => {
   const { Provider } = dashBoardContext;
   const contract = useTokenContract();
 
   const library = useWeb3();
 
-  const { active, account, web3 } = useAuth();
+  const { active, account } = useAuth();
 
   const [ERC20Name, setERC20Name] = useState(null);
 
   const [ERC20Balance, setERC20Balance] = useState(null);
-  const [allowance, setAllowance] = useState(null);
-  const [apy, setApy] = useState(null);
+
   const [globalTVL, setGlobalTVL] = useState(0);
-  const [totalDeposited, setTotalDeposited] = useState(null);
+
   const [interval, setIntervalKey] = useState(0);
 
   const [poolList, setPoolList] = useState([]);
@@ -57,6 +47,7 @@ const DashBoardProvider = ({ children }) => {
     const newList = poolList;
 
     let TOTALTVL = 0;
+    // eslint-disable-next-line array-callback-return
     newList.map((basePool, index) => {
       const pool = basePool;
 
@@ -103,9 +94,6 @@ const DashBoardProvider = ({ children }) => {
         .then(async (poolInfo) => {
           pool.poolInfo = poolInfo;
           pool.stakedTokenName = await stakedToken.name();
-          pool.apy = apy;
-
-          const router = getUniSwapRouterContract(library);
 
           const token0Address = await stakedToken.token0();
 
@@ -157,6 +145,7 @@ const DashBoardProvider = ({ children }) => {
 
           let sweetAPY = dailyStackingReward;
 
+          // eslint-disable-next-line no-unused-vars
           for (const i of Array(364)) {
             sweetAPY += sweetAPY * dailyShojiruReward + dailyStackingReward;
           }
@@ -260,9 +249,6 @@ const DashBoardProvider = ({ children }) => {
         contract,
         ERC20Balance,
         ERC20Name,
-        allowance,
-        apy,
-        totalDeposited,
         poolList,
         refetch,
         globalTVL,

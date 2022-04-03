@@ -10,18 +10,9 @@ import PoolHeader from "./Poolheader";
 import StackingManager from "./stacking-manager";
 
 const PoolCard = ({ pool }) => {
-  const {
-    pair,
-    lock,
-    vault,
-    allowance,
-    apy,
-    userDeposited,
-    userInfo,
-    progress,
-  } = pool;
+  const { vault, allowance, apy, userDeposited, userInfo } = pool;
 
-  const { active, account, login, logout, web3 } = useAuth();
+  const { active, login } = useAuth();
   const { contract, ERC20Name } = useContext(dashBoardContext);
   return (
     <li className="w-full md:w-1/2 p-4">

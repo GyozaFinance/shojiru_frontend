@@ -9,13 +9,13 @@ export const HotAPY = styled.span`
   color: #000;:
 `;
 const PoolHeader = ({ pool }) => {
-  const { pair, lock } = pool;
+  const { pair } = pool;
 
   return (
     <div className="flex flex-col-reverse mb-4 sm:flex-row w-full">
       <ul className="w-20 flex">
         {pair.map((t) => (
-          <li className="pair rounded-full w-1/2 square">
+          <li className="pair rounded-full w-1/2 square" key={t}>
             <span className="centerXY">
               <img src={tokensImages[t]} alt="logo" />
             </span>

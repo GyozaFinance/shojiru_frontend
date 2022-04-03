@@ -13,16 +13,16 @@ export const useTokenContract = () => {
 
 export const useReadOnlyTokenContract = () => {
   const accountLessProvider =  accountLessProviders.find(({chainId}) => chainId === localStorage.getItem('chainId'))?.provider;
-  return useMemo(() => getTokenContract(accountLessProvider), []);
+  return useMemo(() => getTokenContract(accountLessProvider), [accountLessProvider]);
 };
 export const useReadOnlyChefContract = () => {
   const accountLessProvider =  accountLessProviders.find(({chainId}) => chainId === localStorage.getItem('chainId'))?.provider;
-  return useMemo(() => getChefContract(accountLessProvider), []);
+  return useMemo(() => getChefContract(accountLessProvider), [accountLessProvider]);
 };
 
 export const useReadOnlyUniswapRouterContract = () => {
   const accountLessProvider =  accountLessProviders.find(({chainId}) => chainId === localStorage.getItem('chainId'))?.provider;
-  return useMemo(() => getUniSwapRouterContract(accountLessProvider),[])
+  return useMemo(() => getUniSwapRouterContract(accountLessProvider),[accountLessProvider])
 }
 
 export const useChefContract = () => {

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { web3Context } from "../contexts/web3-modal-context";
 
 import Pools from "./pools";
 import { Puff } from "react-loader-spinner";
@@ -29,8 +28,6 @@ const Load = styled.div`
 `;
 
 const DashBoard = () => {
-  const { selectedNetwork, changeNetwork } = useContext(web3Context);
-
   const { load } = useContext(loadContext);
   return (
     <div id="dashboard" className="overflow-hidden relative">

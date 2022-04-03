@@ -1,18 +1,15 @@
 import { useContext, useState } from "react";
-import { ActionButton, TransparentButton } from "../utils/styled";
+import { ActionButton } from "../utils/styled";
 import Rodal from "rodal";
 
 // include styles
 import "rodal/lib/rodal.css";
-import { BigNumber, ethers } from "ethers";
-import { web3Context } from "../contexts/web3-modal-context";
-import useAuth from "../hooks/useAuth";
+
 import { approve } from "../utils/approve";
 import { deposit, withdraw } from "../utils/poolUtils";
 import { loadContext } from "../contexts/load-context";
 import { toast } from "react-toastify";
 import styled from "styled-components";
-import { dashBoardContext } from "../contexts/dashboard-context";
 import { RoundedGradientMask } from "./HotPools";
 export const Input = styled.input`
   padding: 0.3rem;

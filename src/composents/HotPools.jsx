@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { dashBoardContext } from "../contexts/dashboard-context";
-import PoolCard from "./PoolCard";
 import hotfamrs from "../icons/hot_farms.svg";
-import StackingManager from "./stacking-manager";
 import useAuth from "../hooks/useAuth";
 import PoolHeader from "./Poolheader";
 import { TailSpin } from "react-loader-spinner";
@@ -70,7 +68,7 @@ const HotPools = () => {
             const { pair, apy, userDeposited, website, tvl, stakedTokenName } =
               pool;
             return (
-              <li className="w-full md:w-1/3 p-4">
+              <li className="w-full md:w-1/3 p-4" key={pool.vault.address}>
                 <div className="relative rounded-3xl overflow-hidden">
                   <RoundedGradientMask className="rounded-3xl" />
                   <div className="content box p-2 relative ">

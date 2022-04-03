@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import { TailSpin } from "react-loader-spinner";
-import { dashBoardContext } from "../contexts/dashboard-context";
+import React from "react";
+
 import useAuth from "../hooks/useAuth";
 import logo from "../images/logo.png";
 
@@ -27,32 +26,32 @@ const Header = () => {
   return (
     <header className="fixedContainer mx-auto mt-8 rounded-2xl">
       <nav id="navigation" className="flex mx-auto z-50 relative">
-        <a href="/" className="flex p-4">
+        <div className="flex p-4">
           <img src={logo} alt="logo" className="w-10 sm:w-12 md:mr-4" />
           <div className="flex flex-col justify-center">
             <span className="text-2xl hidden md:flex">Shoji.finance</span>
           </div>
-        </a>
+        </div>
         <div className="flex justify-end flex-1 p-4">
           <div className="flex flex-col justify-center mr-4">
             <ul className="rs hidden sm:flex hidden">
               <li className="mx-2">
-                <a href="#" className="flex w-6">
+                <a href="/#" className="flex w-6" target="_blank">
                   <img src={github} alt="github" />
                 </a>
               </li>
               <li className="mx-2">
-                <a href="#" className="flex w-5">
+                <a href="/#" className="flex w-5" target="_blank">
                   <img src={doc} alt="doc" />
                 </a>
               </li>
               <li className="mx-2">
-                <a href="#" className="flex w-6">
+                <a href="/#" className="flex w-6" target="_blank">
                   <img src={discord} alt="discord" />
                 </a>
               </li>
               <li className="mx-2">
-                <a href="#" className="flex w-5">
+                <a href="/#" className="flex w-5" target="_blank">
                   <img src={telegram} alt="telegram" />
                 </a>
               </li>
