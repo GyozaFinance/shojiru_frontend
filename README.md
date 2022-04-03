@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Shojiru.finance!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Shojiru.finance front-end repository! This is our entry for the Telos Spark hackathon. If you're interested in the contract side, head over to the contract repository, for a more technical explanation.
 
-## Available Scripts
+Shojiru.finance is a native yield optimizer, built for Telos. 
 
-In the project directory, you can run:
+## Why another yield optimizer?
 
-### `npm start`
+There exist many Yield optimizers in the EVM market (See Beefy or Autofarm, for instance), most work by compounding the user's rewards and take some management fees. This economic model is indeed great a battle-tested, but for we weren't satisfied with it. We thus took the opportunity of this hackathon to "hack" it a little bit, and improve the user's yield in the meantime!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How does it work?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Shojiru.finance will stake the user's LP tokens into the AMM's farm (here, zappy.finance was used). The reward ($Zappy) will then be sold on the market and exchanged for $Shojiru token. The earned $Shojiru will then be staked in our own boosted farm, with improved APYs, and compounded every day. 
 
-### `npm test`
+This mechanism allows to improve the yield of a user's investment, while protecting his capital, the added risk being only on the rewards and not on the principal. It can also be applied to any type of liquidity, increasing organically the rewards for very competitive pairs, such as stablecoins, for instance.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Yeah, ok, but usually the token dumps, right?
+You're right, most yield optimizer minting a yield token reached the floor after some time, the fees being not high enough to compensate the emission. With this model, this is not the case: because the protocol uses the rewards from the investments to buy everyday new tokens from the market, it creates a constant buy pressure, compensating the natural inflation.
 
-### `npm run build`
+As an added stabilizer, Shojiru has a treasury, along with a burning program, funded by the management fees. In case of a sharp decrease in liquidity, this allows the protocol to buy back tokens to protect the APYs and thus the attractivity of the platform.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Wow, great! Can I start to use it?
+Sure! The contracts should work, and you can already stake. Bear in mind that this is a test/alpha version that we set up for the hackathon: liquidity is low, the token is called "test" and some auditing/more on-chain testing needs to be done. Therefore, feel fee to try, but don't wager important amounts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Which link does your project has with Telos?
+Given that we're one of the first defi projects on Telos, we understand our role as pionneers. Our Solidity dev (Yakitori in the Telos EVM dev chat) has been working closely with Telos core developpers to signal bugs, give feedback and debug issues. We plan to continue the collaboration, in order to improve the development experience for devs on Telos, which we think is pivotal to reach mass adoption.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Roadmap
+We plan in the short term to improve the UI of the platform, to make it even more easy to use and stylish, add charts and proper docs. A proper launch is certainly on the table! In the medium term, We'll consider turning Shojiru.finance into a DAO, or at least adopt a collaborative model where Telos users can submit new strategies - either code or "recipes" and earn a fee from their usage. When a lending/borrowing will come, we're think about creating
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Who are we?
+The team is composed of a Solidity dev (Yakitori/Kusanagi on Discord) and a Front-end dev (Loyu), with more than one year of experience in the cryptoverse as freelancers. We met on a mission for a client, and decided to work together for this hackathon! We're anon for the internet, because we like our privacy, but if the team wants us to do a KYC privately, we are open to it.
