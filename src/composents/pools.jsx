@@ -67,7 +67,7 @@ const Pools = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 sm:w-1/4 sm:mt-0 lg:w-1/6">
+              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 sm:w-1/4 sm:mt-0 lg:w-1/6 font-bold">
                 <span className="block">TVL:</span>
                 <span>
                   {tvl !== null ? (
@@ -84,7 +84,7 @@ const Pools = () => {
                 </span>
               </div>
 
-              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 sm:w-1/4 sm:mt-0 lg:w-1/6">
+              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 sm:w-1/4 sm:mt-0 lg:w-1/6 font-bold">
                 <span className="block">Apy:</span>
                 <GradientText>
                   {apy !== null ? (
@@ -100,7 +100,7 @@ const Pools = () => {
                   )}
                 </GradientText>
               </div>
-              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 lg:w-1/6 lg:mt-0">
+              <div className="flex flex-col justify-center font-bold mt-8 w-1/2 lg:w-1/6 lg:mt-0 font-bold">
                 <span className="block">Deposited:</span>
                 {active && (
                   <div>

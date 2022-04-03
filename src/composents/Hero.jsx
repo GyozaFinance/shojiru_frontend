@@ -17,7 +17,7 @@ const Hero = () => {
 
   return (
     <div className="fixedSmallContainer mx-auto justify-center flex-wrap flex text-center p-4 md:p-8">
-      <h1 className="text-center p-2 text-3xl w-full mb-4 md:mb-8 md:text-4xl">
+      <h1 className="text-center p-2 text-3xl w-full mb-4 md:mb-8 md:text-4xl font-bold">
         Get the <strong>yield</strong> your investments deserve
       </h1>
       <HeroImages>
@@ -31,7 +31,7 @@ const Hero = () => {
           <img src={hero3} alt="unicorn" />
         </li>
       </HeroImages>
-      <h2 className="w-full text-primary text-3xl mt-4 md:text-4xl md:mt-8">
+      <h2 className="w-full text-primary text-3xl mt-4 md:text-4xl md:mt-8 font-extrabold">
         TVL: {globalTVL} $
       </h2>
     </div>

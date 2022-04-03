@@ -29,7 +29,9 @@ const Header = () => {
         <div className="flex p-4">
           <img src={logo} alt="logo" className="w-10 sm:w-12 md:mr-4" />
           <div className="flex flex-col justify-center">
-            <span className="text-2xl hidden md:flex">Shoji.finance</span>
+            <span className="text-2xl hidden md:flex font-bold">
+              Shoji.finance
+            </span>
           </div>
         </div>
         <div className="flex justify-end flex-1 p-4">
@@ -68,7 +70,7 @@ const Header = () => {
               );
             }}
           >
-            <img src={tokenImage} alt="Shoji.finance" className="w-8 z-50" />
+            <img src={tokenImage} alt="Shoji.finance" className="w-8" />
             <AbsoluteBottomRight>
               <FaPlusCircle />
             </AbsoluteBottomRight>
@@ -89,7 +91,7 @@ const Header = () => {
             <React.StrictMode>
               <div className="flex flex-col justify-center">
                 <div className="flex">
-                  <span className="mr-4">
+                  <span className="mr-4 font-bold">
                     0x***
                     {accountConverted.slice(
                       accountConverted.length - 4,

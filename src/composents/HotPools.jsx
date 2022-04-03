@@ -78,7 +78,7 @@ const HotPools = () => {
                         <SmallText className="block">
                           {website !== undefined && website}
                         </SmallText>
-                        <span className="tracking-wider text-sml">
+                        <span className="tracking-wider text-sml font-semibold">
                           {pair.map((token, index) => {
                             return `${token}${index !== 1 ? "-" : ""} `;
                           })}
@@ -87,7 +87,7 @@ const HotPools = () => {
                       <li className="flex flex-wrap justify-end">
                         <span className="block text-xs w-full">APY</span>
                         <strong>
-                          <GradientText>
+                          <GradientText className="font-semibold">
                             {apy !== null ? (
                               `${apy} %`
                             ) : (
@@ -106,9 +106,10 @@ const HotPools = () => {
                         <SmallText className="block">Deposited</SmallText>
                         {active &&
                           (userDeposited !== null ? (
-                            `${userDeposited} ${
-                              stakedTokenName ? stakedTokenName : ""
-                            }`
+                            <span className="font-semibold">
+                              `${userDeposited} $
+                              {stakedTokenName ? stakedTokenName : ""}`
+                            </span>
                           ) : (
                             <span className="relative block pt-2 ml-4">
                               <TailSpin

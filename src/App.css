@@ -6,24 +6,37 @@
 
 @font-face {
   font-family: "SF Pro Rounded";
-  src: url("./fonts/sf-pro.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: "SF Pro Rounded";
-  src: url("./fonts/sf-pro.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "SF Pro Rounded";
   src: url("./fonts/sf-pro-light.ttf") format("truetype");
-  font-weight: lighter;
+  font-weight: 300;
   font-style: normal;
 }
 
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./fonts/sf-pro.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./fonts/sf-pro-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./fonts/sf-pro-semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./fonts/sf-pro-heavy.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
 #WEB3_CONNECT_MODAL_ID {
   z-index: 999999999;
   position: relative;

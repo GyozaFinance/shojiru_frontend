@@ -14,6 +14,7 @@ export const ActionButton = styled.button`
   justify-content: center;
   padding: 1rem 1rem;
   font-size: 1rem;
+  font-weight: 700;
 
   &:hover {
     background-color: #000;
@@ -33,6 +34,7 @@ export const GreenButton = styled.button`
   justify-content: center;
   padding: 0 1rem;
   font-size: 1rem;
+  font-weight: 700;
 
   &:hover {
     background-color: #000;
@@ -65,7 +67,7 @@ export const TransparentButton = styled.button`
 
 export const SmallText = styled.span`
   font-size: 0.7rem;
-  font-weight: lighter;
+  font-weight: 300;
 `;
 
 export const GradientText = styled.span`
