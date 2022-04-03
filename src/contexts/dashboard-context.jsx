@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { BigNumber, ethers } from "ethers";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { useTokenContract } from "../hooks/useContract";
 import useWeb3 from "../hooks/useWeb3";
@@ -43,8 +43,9 @@ const DashBoardProvider = ({ children }) => {
 
   const { selectedNetwork } = useContext(web3Context);
   const [refetch, setRefetch] = useState(null);
-  const poolDetails = () => {
-    const newList = poolList;
+
+  const poolDetails = (list) => {
+    const newList = list;
 
     let TOTALTVL = 0;
     // eslint-disable-next-line array-callback-return
@@ -59,7 +60,6 @@ const DashBoardProvider = ({ children }) => {
         pool.tokenInfos.address,
         pool.tokenInfos.abi
       );
-
       const { chef, vault, poolIndex, stakedToken } = pool;
 
       if (account) {
@@ -156,13 +156,14 @@ const DashBoardProvider = ({ children }) => {
           }
 
           pool.apy = Math.round(sweetAPY * 10000) / 100;
+
           return;
         })
 
         .then(() => {
           newList[index] = pool;
           TOTALTVL += pool.tvl;
-          setGlobalTVL(TOTALTVL);
+          if (index === poolList.length) setGlobalTVL(TOTALTVL);
           setRefetch(new Date().getTime());
           setPoolList(newList);
         });
@@ -194,9 +195,9 @@ const DashBoardProvider = ({ children }) => {
           poolList.length ===
           pools.filter((p) => p.chainId === selectedNetwork.chainId).length
         ) {
-          poolDetails();
+          poolDetails(poolList);
         }
-      }, 5000)
+      }, 30000)
     );
   }, [account, active, poolList]);
 
@@ -245,7 +246,8 @@ const DashBoardProvider = ({ children }) => {
         }
       );
     setPoolList(newList);
-    poolDetails();
+
+    poolDetails(newList);
   }, [selectedNetwork, account]);
 
   return (
