@@ -134,8 +134,13 @@ const DashBoardProvider = ({ children }) => {
           );
 
           const shijiruBalanceOF = await contract.balanceOf(yoPoolInfo.strat);
+          const perSec = await chef.zapPerSecond();
 
-          const factorA = BigNumber.from("25364728697305861980160");
+          const factorA = perSec
+            .mul(poolInfo.allocPoint)
+            .div(631)
+            .mul(60 ** 2 * 24);
+
           const factorB = BigNumber.from("86400000000000000000000");
           const dailyStackingReward =
             (factorA.mul(10000).div(tokenBalanceOf).toNumber() / 10000) * 2;

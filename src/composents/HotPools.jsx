@@ -62,6 +62,8 @@ const HotPools = () => {
             [
               // Pool vault address (show on pools.js)
               "0xE714F8245976440f67d92BFC63c50692B6d2D5D0",
+              "0x716FAf38940edd7399BD873AfBC442dCE9206422",
+              "0x39cDf92031BC17dD1443065382F1CbA1d93aA405",
             ].includes(vault.address)
           )
           .map((pool) => {
