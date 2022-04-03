@@ -29,7 +29,7 @@ const Header = () => {
         <div className="flex p-4">
           <img src={logo} alt="logo" className="w-10 sm:w-12 md:mr-4" />
           <div className="flex flex-col justify-center">
-            <span className="text-2xl hidden md:flex font-bold">
+            <span className="text-3xl hidden md:flex font-bold">
               Shoji.finance
             </span>
           </div>
